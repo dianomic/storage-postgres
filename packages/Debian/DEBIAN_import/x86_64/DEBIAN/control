@@ -1,5 +1,5 @@
 Package: foglamp-storage-postgres
-Version: 00.01-9.6_201608131
+Version: 00.01-9.6.201608131
 Section: database
 Priority: optional
 Architecture: amd64
