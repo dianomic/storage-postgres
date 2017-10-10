@@ -17,5 +17,11 @@ pgsql-foglamp-9.6_201608131-x86_64.tgz     100%[================================
 
 2017-10-10 16:35:59 (51.2 KB/s) - ‘pgsql-foglamp-9.6_201608131-x86_64.tgz’ saved [13512593/13512593]
 
-foglamp@foglamp-dev:~$
+foglamp@foglamp-dev:~$foglamp@foglamp-dev:~$ cd storage-postgres/
+foglamp@foglamp-dev:~/storage-postgres$ tar xzvf ~/pgsql-foglamp-9.6_201608131-x86_64.tgz
+pgsql-x86_64/
+pgsql-x86_64/share/
+...
+pgsql-x86_64/lib/libcom_err.so.3
+foglamp@foglamp-dev:~/storage-postgres$
 ```
