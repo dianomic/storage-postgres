@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e
+
+usage="$(basename "$0") {x86|arm}
+This script is used to create the Debian package as the
+PostgreSQL Storage Plugin of FogLAMP.
+
+Arguments: 
+ x86 - Build an x86_64 package
+ arm - Build an armv7l package"
+
+case "$1" in
+    x86)
+        echo "Build X86"
+        exit 0
+        ;;
+    arm)
+        echo "Build ARM"
+        exit 0
+        ;;
+    *)
+        echo "${usage}"
+        exit 1
+        ;;
+esac
+
+dpkg-deb --build ${package_name}
+
+exit 0
