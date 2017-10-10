@@ -28,3 +28,7 @@ pgsql-x86_64/share/
 pgsql-x86_64/lib/libcom_err.so.3
 foglamp@foglamp-dev:~/storage-postgres$
 ```
+
+## Building the Debian Package
+
+There is a script in _packages/Debian/bin_ named _make_deb_
