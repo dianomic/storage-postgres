@@ -3,6 +3,7 @@ This repository provides a tailored version of PostgreSQL used as a Storage Plug
 
 Download a tarball with the prepared version of PostgreSQL available here:
 * For Intel [x86_64](https://s3.amazonaws.com/foglamp/plugins/storage/postgres/pgsql-foglamp-9.6_201608131-x86_64.tgz).
+
 The tarball must be extracted in the git main folder. 
 
 This is the download and untar example for the x86 platform:
