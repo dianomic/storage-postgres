@@ -31,4 +31,25 @@ foglamp@foglamp-dev:~/storage-postgres$
 
 ## Building the Debian Package
 
-There is a script in _packages/Debian/bin_ named _make_deb_
+There is a script in _packages/Debian/bin_ named _make_deb_. Once you have downloaded and extracted PostgreSQL for your favorite platform, execute the _make_deb_ script.
+
+```
+foglamp@foglamp-dev:~/storage-postgres$ packages/Debian/bin/make_deb x86
+The platform is set as x86_64
+The package name is foglamp-storage-postgres-00.01-9.6.201608131-x86_64
+Populating the package...Done.
+Adding FogLAMP customization...Done.
+Building the new package...
+dpkg-deb: building package 'foglamp-storage-postgres' in 'foglamp-storage-postgres-00.01-9.6.201608131-x86_64.deb'.
+Building Complete.
+foglamp@foglamp-dev:~/storage-postgres$
+```
+
+The working directory and the newly built Debian package are in the _packages/Debian/build_ folder:
+```
+foglamp@foglamp-dev:~/storage-postgres$ ls -l packages/Debian/build/
+total 8504
+drwxrwxr-x 4 foglamp foglamp    4096 Oct 10 16:48 foglamp-storage-postgres-00.01-9.6.201608131-x86_64
+-rw-r--r-- 1 foglamp foglamp 8701188 Oct 10 16:49 foglamp-storage-postgres-00.01-9.6.201608131-x86_64.deb
+foglamp@foglamp-dev:~/storage-postgres$
+```
