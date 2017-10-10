@@ -1,3 +1,33 @@
 #!/bin/bash
 
+set -e
+
+USAGE="Usage: `basename ${0}` {help|start|stop|restart|status|init}"
+
+### Main Logic ###
+case "$1" in
+  init)
+    rm -rf /usr/local/foglamp/data/storage/postgres/*
+    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl init -D /usr/local/foglamp/data/storage/postgres/pgsql
+    ;;
+  start)
+    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl -D /usr/local/foglamp/data/storage/postgres/pgsql -l logfile start
+    ;;
+  stop)
+    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl -D /usr/local/foglamp/data/storage/postgres/pgsql stop
+    ;;
+  restart|reload|condrestart)
+    ;;
+  kill)
+    ;;
+  status)
+    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl -D /usr/local/foglamp/data/storage/postgres/pgsql status
+    ;;
+  help)
+    ;;
+  *)
+    echo "${USAGE}"
+    exit 1
+esac
+
 exit 0
