@@ -62,7 +62,7 @@ echo "Done."
 # Add customised files
 echo -n "Adding FogLAMP customization..."
 
-cp -R ${GIT_ROOT}/share .
+cp -R ${GIT_ROOT}/share/* share/postgresql/.
 cd ${BUILD_ROOT}/${package_name}/usr/local/foglamp/plugins/storage/postgres
 mkdir bin
 cp ${GIT_ROOT}/scripts/* bin/.
