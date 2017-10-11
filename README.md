@@ -140,3 +140,22 @@ pg_ctl: no server running
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$
 </pre>
 
+The database is also accessible with the _psql_ command line utility, available in _/usr/local/foglamp/plugins/storage/postgres/pgsql/bin_. 
+
+Please consider the defaults:
+* The socket file is in /usr/local/foglamp/data/storage/postgres
+* The user _foglamp_ (no password)
+* The database is _postgres_
+
+<pre>
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/pgsql/bin$ <b>/usr/local/foglamp/plugins/storage/postgres/bin/foglamp.postgres start</b>
+server starting
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/pgsql/bin$ <b>./psql -U foglamp postgres -h /usr/local/foglamp/data/storage/postgres</b>
+psql.bin (9.6.3)
+Type "help" for help.
+
+Cannot read termcap database;
+using dumb terminal settings.
+postgres=# ^D\q
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/pgsql/bin$
+</pre>
