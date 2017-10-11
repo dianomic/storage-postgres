@@ -8,7 +8,7 @@ The tarball must be extracted in the git main folder.
 
 This is the download and untar example for the x86 platform:
 <pre>
-foglamp@foglamp-dev:~$ wget https://s3.amazonaws.com/foglamp/plugins/storage/postgres/pgsql-foglamp-9.6_201608131-x86_64.tgz
+foglamp@foglamp-dev:~$ <b>wget https://s3.amazonaws.com/foglamp/plugins/storage/postgres/pgsql-foglamp-9.6_201608131-x86_64.tgz</b>
 --2017-10-10 16:31:41--  https://s3.amazonaws.com/foglamp/plugins/storage/postgres/pgsql-foglamp-9.6_201608131-x86_64.tgz
 Resolving s3.amazonaws.com (s3.amazonaws.com)... 52.216.230.125
 Connecting to s3.amazonaws.com (s3.amazonaws.com)|52.216.230.125|:443... connected.
@@ -20,8 +20,8 @@ pgsql-foglamp-9.6_201608131-x86_64.tgz     100%[================================
 
 2017-10-10 16:35:59 (51.2 KB/s) - ‘pgsql-foglamp-9.6_201608131-x86_64.tgz’ saved [13512593/13512593]
 
-foglamp@foglamp-dev:~$foglamp@foglamp-dev:~$ cd storage-postgres/
-foglamp@foglamp-dev:~/storage-postgres$ tar xzvf ~/pgsql-foglamp-9.6_201608131-x86_64.tgz
+foglamp@foglamp-dev:~$foglamp@foglamp-dev:~$ <b>cd storage-postgres/</b>
+foglamp@foglamp-dev:~/storage-postgres$ <b>tar xzvf ~/pgsql-foglamp-9.6_201608131-x86_64.tgz</b>
 pgsql-x86_64/
 pgsql-x86_64/share/
 ...
