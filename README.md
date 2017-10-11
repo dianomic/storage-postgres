@@ -156,6 +156,6 @@ Type "help" for help.
 
 Cannot read termcap database;
 using dumb terminal settings.
-postgres=# ^D\q
+postgres=# <b>^D\q</b>
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/pgsql/bin$
 </pre>
