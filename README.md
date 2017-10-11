@@ -71,7 +71,8 @@ foglamp@foglamp-test:~/Downloads$
 You can check if the packages is already installed and the name of the package with this command:
 <pre>
 foglamp@foglamp-test:~/Downloads$ <b>sudo dpkg -l | grep 'foglamp'</b>
-ii  foglamp-storage-postgres           00.01-9.6.201608131                        amd64        PostgreSQL Storage Layer Plugin for FogLAMPfoglamp@foglamp-test:~/Downloads$
+ii  foglamp-storage-postgres           00.01-9.6.201608131                        amd64        PostgreSQL Storage Layer Plugin for FogLAMP
+foglamp@foglamp-test:~/Downloads$
 </pre>
 
 If you want to uninstall the package, use the usual Debian command:
@@ -80,5 +81,62 @@ foglamp@foglamp-test:~/Downloads$ <b>sudo dpkg -r foglamp-storage-postgres</b>
 (Reading database ... 126439 files and directories currently installed.)
 Removing foglamp-storage-postgres (00.01-9.6.201608131) ...
 dpkg: warning: while removing foglamp-storage-postgres, directory '/usr/local' not empty so not removed
+</pre>
+
+## Starting, Stopping and Managing the Database Server
+
+By default, the database server is installed in the _/usr/local/foglamp/plugins/storage/postgres/pgsql_.
+The data directory, containing the system datafile and the socket file, is _/usr/local/foglamp/data/storage/postgres_
+
+There is an script that can be used to administer the database server in _/usr/local/foglamp/plugins/storage/postgres/bin_. The name of the script is _foglamp.postgres_
+
+The script executes these functions:
+* **init**: Initialize the Database server (this action should not be necessary, since FogLAMP will execute it automatically)
+* **start**: Start the Database server
+* **status**: Check the status of the Database server
+* **stop**: Stop the Database server
+
+<pre>
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres init</b>
+The files belonging to this database system will be owned by user "foglamp".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_GB.UTF-8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+creating directory /usr/local/foglamp/data/storage/postgres/pgsql ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl -D /usr/local/foglamp/data/storage/postgres/pgsql -l logfile start
+
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres status</b>
+pg_ctl: no server running
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres start</b>
+server starting
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres status</b>
+pg_ctl: server is running (PID: 1422)
+/usr/local/foglamp/plugins/storage/postgres/pgsql/bin/postgres "-D" "/usr/local/foglamp/data/storage/postgres/pgsql"
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres stop</b>
+waiting for server to shut down.... done
+server stopped
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres status</b>
+pg_ctl: no server running
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$
 </pre>
 
