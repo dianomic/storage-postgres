@@ -29,6 +29,7 @@ pgsql-x86_64/lib/libcom_err.so.3
 foglamp@foglamp-dev:~/storage-postgres$
 </pre>
 
+
 ## Building the Debian Package
 
 There is a script in _packages/Debian/bin_ named _make_deb_. Once you have downloaded and extracted PostgreSQL for your favorite platform, execute the _make_deb_ script.
@@ -52,4 +53,17 @@ total 8504
 drwxrwxr-x 4 foglamp foglamp    4096 Oct 10 16:48 foglamp-storage-postgres-00.01-9.6.201608131-x86_64
 -rw-r--r-- 1 foglamp foglamp 8701188 Oct 10 16:49 foglamp-storage-postgres-00.01-9.6.201608131-x86_64.deb
 foglamp@foglamp-dev:~/storage-postgres$
+</pre>
+
+
+## Installing and Uninstalling the Package
+
+Install the PostgreSQL storage layer package as any other Debian package:
+<pre>
+<font color="green">foglamp@foglamp-test</font>:<font color="blue">~/Downloads$</font> <b>sudo dpkg -i foglamp-storage-postgres-00.01-9.6.201608131-x86_64.deb</b>
+(Reading database ... 126439 files and directories currently installed.)
+Preparing to unpack foglamp-storage-postgres-00.01-9.6.201608131-x86_64.deb ...
+Unpacking foglamp-storage-postgres (00.01-9.6.201608131) over (00.01-9.6.201608131) ...
+Setting up foglamp-storage-postgres (00.01-9.6.201608131) ...
+<font color="green">foglamp@foglamp-test</font>:<font color="blue">~/Downloads$</font>
 </pre>
