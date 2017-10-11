@@ -60,10 +60,25 @@ foglamp@foglamp-dev:~/storage-postgres$
 
 Install the PostgreSQL storage layer package as any other Debian package:
 <pre>
-<font color="green">foglamp@foglamp-test</font>:<font color="blue">~/Downloads$</font> <b>sudo dpkg -i foglamp-storage-postgres-00.01-9.6.201608131-x86_64.deb</b>
+foglamp@foglamp-test:~/Downloads$ <b>sudo dpkg -i foglamp-storage-postgres-00.01-9.6.201608131-x86_64.deb</b>
 (Reading database ... 126439 files and directories currently installed.)
 Preparing to unpack foglamp-storage-postgres-00.01-9.6.201608131-x86_64.deb ...
 Unpacking foglamp-storage-postgres (00.01-9.6.201608131) over (00.01-9.6.201608131) ...
 Setting up foglamp-storage-postgres (00.01-9.6.201608131) ...
-<font color="green">foglamp@foglamp-test</font>:<font color="blue">~/Downloads$</font>
+foglamp@foglamp-test:~/Downloads$
 </pre>
+
+You can check if the packages is already installed and the name of the package with this command:
+<pre>
+foglamp@foglamp-test:~/Downloads$ <b>sudo dpkg -l | grep 'foglamp'</b>
+ii  foglamp-storage-postgres           00.01-9.6.201608131                        amd64        PostgreSQL Storage Layer Plugin for FogLAMPfoglamp@foglamp-test:~/Downloads$
+</pre>
+
+If you want to uninstall the package, use the usual Debian command:
+<pre>
+foglamp@foglamp-test:~/Downloads$ <b>sudo dpkg -r foglamp-storage-postgres</b>
+(Reading database ... 126439 files and directories currently installed.)
+Removing foglamp-storage-postgres (00.01-9.6.201608131) ...
+dpkg: warning: while removing foglamp-storage-postgres, directory '/usr/local' not empty so not removed
+</pre>
+
