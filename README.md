@@ -7,7 +7,7 @@ Download a tarball with the prepared version of PostgreSQL available here:
 The tarball must be extracted in the git main folder. 
 
 This is the download and untar example for the x86 platform:
-```
+<pre>
 foglamp@foglamp-dev:~$ wget https://s3.amazonaws.com/foglamp/plugins/storage/postgres/pgsql-foglamp-9.6_201608131-x86_64.tgz
 --2017-10-10 16:31:41--  https://s3.amazonaws.com/foglamp/plugins/storage/postgres/pgsql-foglamp-9.6_201608131-x86_64.tgz
 Resolving s3.amazonaws.com (s3.amazonaws.com)... 52.216.230.125
@@ -27,7 +27,7 @@ pgsql-x86_64/share/
 ...
 pgsql-x86_64/lib/libcom_err.so.3
 foglamp@foglamp-dev:~/storage-postgres$
-```
+</pre>
 
 ## Building the Debian Package
 
