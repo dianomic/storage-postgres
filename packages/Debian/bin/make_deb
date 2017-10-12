@@ -21,9 +21,7 @@ case "$1" in
         platform="x86_64"
         ;;
     arm)
-        platform="armv7l"
-        echo "Build ARM"
-        exit 0
+        platform="armhf"
         ;;
     *)
         echo "${usage}"
@@ -39,6 +37,12 @@ echo "The package name is ${package_name}"
 
 # Create the package directory. If a directory with the same name exists,
 # it is copied with a version number.
+
+# First, create the BUILD_ROOT folder, if necessary
+if [ ! -L "${BUILD_ROOT}" -a ! -d "${BUILD_ROOT}" ]; then
+    mkdir -p "${BUILD_ROOT}"
+fi
+
 cd "${BUILD_ROOT}"
 existing_pkgs=`find . -maxdepth 1 -name "${package_name}.????" | wc -l`
 existing_pkgs=$((existing_pkgs+1))

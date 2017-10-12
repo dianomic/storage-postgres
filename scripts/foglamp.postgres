@@ -4,24 +4,62 @@ set -e
 
 USAGE="Usage: `basename ${0}` {help|start|stop|restart|status|init}"
 
+# Check Variables FOGLAMP_ROOT and FOGLAMP_DATA
+if [ -z ${FOGLAMP_ROOT+x} ]; then
+    FOGLAMP_ROOT="/usr/local/foglamp"
+fi
+if [ -z ${FOGLAMP_DATA+x} ]; then
+    FOGLAMP_DATA="/usr/local/foglamp/data"
+fi
+
+# Set Variables
+PG_ROOT_DATA="${FOGLAMP_DATA}/storage/postgres"
+PG_DATA="${PG_ROOT_DATA}/pgsql"
+PG_BIN="${FOGLAMP_ROOT}/plugins/storage/postgres/pgsql/bin"
+
+
+## PostgreSQL Init
+pg_init() {
+    rm -rf "${PG_ROOT_DATA}"/*
+    "${PG_BIN}/pg_ctl" init -D "${PG_DATA}"
+}
+
+
+## PostgreSQL Status
+pg_start() {
+    "${PG_BIN}/pg_ctl" -D "${PG_DATA}" -l logfile start
+}
+
+
+## PostgreSQL Stop
+pg_stop() {
+    "${PG_BIN}/pg_ctl" -D "${PG_DATA}" stop
+}
+
+
+## PostgreSQL Start
+pg_status() {
+    "${PG_BIN}/pg_ctl" -D "${PG_DATA}" status
+}
+
+
 ### Main Logic ###
 case "$1" in
   init)
-    rm -rf /usr/local/foglamp/data/storage/postgres/*
-    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl init -D /usr/local/foglamp/data/storage/postgres/pgsql
+    pg_init
     ;;
   start)
-    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl -D /usr/local/foglamp/data/storage/postgres/pgsql -l logfile start
+    pg_start
     ;;
   stop)
-    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl -D /usr/local/foglamp/data/storage/postgres/pgsql stop
+    pg_stop
     ;;
   restart|reload|condrestart)
     ;;
   kill)
     ;;
   status)
-    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl -D /usr/local/foglamp/data/storage/postgres/pgsql status
+    pg_status
     ;;
   help)
     ;;
