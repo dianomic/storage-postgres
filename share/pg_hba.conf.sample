@@ -97,7 +97,7 @@ host    all             all             0.0.0.0/0               trust
 #host    all             all             ::1/128                 trust
 
 # Remove the comment below if you want to access the DB server via TCP from any machine
-#host    all             all             ::0/0                   trust
+host    all             all             ::0/0                   trust
 
 # Allow replication connections from localhost, by a user with the
 # replication privilege.
