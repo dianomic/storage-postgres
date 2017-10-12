@@ -3,6 +3,7 @@ This repository provides a tailored version of PostgreSQL used as a Storage Plug
 
 Download a tarball with the prepared version of PostgreSQL available here:
 * For Intel [x86_64](https://s3.amazonaws.com/foglamp/plugins/storage/postgres/pgsql-foglamp-9.6_201608131-x86_64.tgz).
+* For ARM   [amrhf](https://s3.amazonaws.com/foglamp/plugins/storage/postgres/pgsql-foglamp-9.6_201608131-armhf.tgz).
 
 The tarball must be extracted in the git main folder. 
 
@@ -159,3 +160,22 @@ using dumb terminal settings.
 postgres=# <b>^D\q</b>
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/pgsql/bin$
 </pre>
+
+## Known Issues
+
+### Executing psql on ARM
+In order to execute psql on ARM, an extra set of libraries must be added to the path:
+
+<pre>
+foglamp@foglamp-dev:~$ <b>LD_LIBRARY_PATH=/usr/local/foglamp/plugins/storage/postgres/pgsql/lib:/usr/local/foglamp/plugins/storage/postgres/pgsql/lib/arm-linux-gnueabihf</b>
+foglamp@foglamp-dev:~$ <b>export LD_LIBRARY_PATH</b>
+foglamp@foglamp-dev:~$ <b>/usr/local/foglamp/plugins/storage/postgres/pgsql/bin/psql -h /usr/local/foglamp/data/storage/postgres -U foglamp postgres</b>
+psql (9.6.3)
+Type "help" for help.
+
+postgres=# <b>\q</b>
+foglamp@foglamp-dev:~$
+</pre>
+
+This issue will be fixed in the future.
+
