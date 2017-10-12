@@ -1,9 +1,0 @@
-Name: libpgtypes
-Description: PostgreSQL libpgtypes library
-Url: http://www.postgresql.org/
-Version: 9.6.3
-Requires: 
-Requires.private: 
-Cflags: -I/usr/include
-Libs: -L/usr/lib -lpgtypes
-Libs.private: -L/usr/lib/arm-linux-gnueabihf/mit-krb5 -L/usr/lib/mit-krb5 -lm
