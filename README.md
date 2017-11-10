@@ -89,55 +89,46 @@ dpkg: warning: while removing foglamp-storage-postgres, directory '/usr/local' n
 By default, the database server is installed in the _/usr/local/foglamp/plugins/storage/postgres/pgsql_.
 The data directory, containing the system datafile and the socket file, is _/usr/local/foglamp/data/storage/postgres_
 
-There is an script that can be used to administer the database server in _/usr/local/foglamp/plugins/storage/postgres/bin_. The name of the script is _foglamp.postgres_
+The script _/usr/local/foglamp/plugins/storage/postgres/bin/foglamp.postgres_ is used to administer the database server.
 
 The script executes these functions:
-* **init**: Initialize the Database server (this action should not be necessary, since FogLAMP will execute it automatically)
+* **reset**: Reset the Database server. With this command, all the data in the database server will be removed.
 * **start**: Start the Database server
 * **status**: Check the status of the Database server
 * **stop**: Stop the Database server
+* **restart**: Stop and then start the Database server
+* **help**: Show the help page
 
 <pre>
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres init</b>
-The files belonging to this database system will be owned by user "foglamp".
-This user must also own the server process.
-
-The database cluster will be initialized with locale "en_GB.UTF-8".
-The default database encoding has accordingly been set to "UTF8".
-The default text search configuration will be set to "english".
-
-Data page checksums are disabled.
-
-creating directory /usr/local/foglamp/data/storage/postgres/pgsql ... ok
-creating subdirectories ... ok
-selecting default max_connections ... 100
-selecting default shared_buffers ... 128MB
-selecting dynamic shared memory implementation ... posix
-creating configuration files ... ok
-running bootstrap script ... ok
-performing post-bootstrap initialization ... ok
-syncing data to disk ... ok
+This script will remove all data stored in the server.
+Enter YES if you want to continue: YES
+FagLAMP PostgreSQL plugin does not appear to be running.
+Cleaning the Root Data directory...
+Initializing the Data directory...
 
 WARNING: enabling "trust" authentication for local connections
 You can change this by editing pg_hba.conf or using the option -A, or
 --auth-local and --auth-host, the next time you run initdb.
-
-Success. You can now start the database server using:
-
-    /usr/local/foglamp/plugins/storage/postgres/pgsql/bin/pg_ctl -D /usr/local/foglamp/data/storage/postgres/pgsql -l logfile start
+FogLAMP PostgreSQL plugin reset.
 
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres status</b>
-pg_ctl: no server running
+FogLAMP PostgreSQL plugin not running.
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres start</b>
-server starting
+waiting for server to start..... done
+server started
+Building the metadata for the FogLAMP Plugin...
+Build completed.
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres status</b>
-pg_ctl: server is running (PID: 1422)
-/usr/local/foglamp/plugins/storage/postgres/pgsql/bin/postgres "-D" "/usr/local/foglamp/data/storage/postgres/pgsql"
+FogLAMP PostgreSQL plugin running.
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres stop</b>
 waiting for server to shut down.... done
 server stopped
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres status</b>
-pg_ctl: no server running
+FogLAMP PostgreSQL plugin not running.
+foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres start</b>
+waiting for server to start.... done
+server started
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$
 </pre>
 
@@ -150,7 +141,8 @@ Please consider the defaults:
 
 <pre>
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/pgsql/bin$ <b>/usr/local/foglamp/plugins/storage/postgres/bin/foglamp.postgres start</b>
-server starting
+waiting for server to start.... done
+server started
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/pgsql/bin$ <b>./psql -U foglamp postgres -h /usr/local/foglamp/data/storage/postgres</b>
 psql.bin (9.6.3)
 Type "help" for help.
