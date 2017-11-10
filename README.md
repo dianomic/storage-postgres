@@ -84,6 +84,12 @@ Removing foglamp-storage-postgres (00.01-9.6.201608131) ...
 dpkg: warning: while removing foglamp-storage-postgres, directory '/usr/local' not empty so not removed
 </pre>
 
+
+## Integration with FogLAMP
+
+In order to operate, the server requires an initialization SQL script, _init.sql_ that is installed with the FogLAMP Storage Plugin. The script is available on GitHub in the FogLAMP repository, and it must be copied (or installed) in _/usr/local/foglamp/plugins/storage/postgres_.
+
+
 ## Starting, Stopping and Managing the Database Server
 
 By default, the database server is installed in the _/usr/local/foglamp/plugins/storage/postgres/pgsql_.
@@ -152,6 +158,7 @@ using dumb terminal settings.
 postgres=# <b>^D\q</b>
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/pgsql/bin$
 </pre>
+
 
 ## Known Issues
 
