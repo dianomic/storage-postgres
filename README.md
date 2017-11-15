@@ -108,7 +108,7 @@ The script executes these functions:
 * **restart**: Stop and then start the Database server
 * **help**: Show the help page
 
-The _start_ argument passed to the script, automatically initializes the database server:
+With _foglamp.postgres start_, the script automatically initializes the database server:
 <pre>
 foglamp@foglamp-test:/usr/local/foglamp/plugins/storage/postgres/bin$ <b>./foglamp.postgres start</b>
 Cleaning the Root Data directory...
